@@ -1,0 +1,9 @@
+<nav class="">
+    <ul>
+        <li> <%= link_to "Home", churches_path %> </li>
+        <% if current_user %>
+          <li> <%= link_to "New Applicant", new_applicant_path %></li>
+        <% end %>
+        <%= render 'layouts/sign_in' %>
+    </ul>
+</nav>

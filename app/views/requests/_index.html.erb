@@ -1,0 +1,34 @@
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Cost</th>
+      <th>Availability</th>
+      <th>Business</th>
+      <th>Benefit</th>
+      <th>Why</th>
+      <th>Recommentdation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Array(@requests).each do |request| %>
+      <tr>
+        <td><%= request.item %></td>
+        <td><%= request.cost %></td>
+        <td><%= request.availability %></td>
+        <td><%= request.business %></td>
+        <td><%= request.benefit %></td>
+        <td><%= request.why %></td>
+        <td><%= request.recommentdation %></td>
+        <td><%= link_to 'Show', applicant_request_path(@applicant, request) %></td>
+        <td><%= link_to 'Edit', edit_applicant_request_path(@applicant, request) %></td>
+        <td><%= link_to 'Destroy', [@applicant, request], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

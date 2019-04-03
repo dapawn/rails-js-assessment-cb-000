@@ -1,0 +1,29 @@
+<%= form_for(@church) do |f| %>
+  <% if @church.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@church.errors.count, "error") %> prohibited this church from being saved:</h2>
+
+      <ul>
+      <% @church.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :minister %><br>
+    <%= f.text_field :minister %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

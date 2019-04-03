@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Applicant Details:</h1>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @applicant.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @applicant.lname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @applicant.address %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @applicant.gender %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @applicant.dob %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @applicant.phone %>
+</p>
+
+<p>
+  <strong>Married status:</strong>
+  <%= @applicant.married_status %>
+</p>
+
+<p>
+  <strong>Church:</strong>
+  <%= @applicant.church.city %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @applicant.occupation %>
+</p>
+
+<p>
+  <strong>Occupation status:</strong>
+  <%= @applicant.occupation_status %>
+</p>
+
+<p>
+  <strong>Income:</strong>
+  <%= @applicant.income %>
+</p>
+
+<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Back', applicants_path %>
+
+<h1>Assets Details: </h1>
+<%= render 'assets/index' %>
+
+<h1>Household Details: </h1>
+<%= render 'household_members/index' %>
+
+<h1>Request Details: </h1>
+<%= render 'requests/index' %>
+

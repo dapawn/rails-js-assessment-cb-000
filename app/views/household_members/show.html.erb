@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @household_member.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @household_member.age %>
+</p>
+
+<p>
+  <strong>Relation:</strong>
+  <%= @household_member.relation %>
+</p>
+
+<%= link_to 'Edit', edit_applicant_household_member_path(@applicant, @household_member) %> |
+<%= link_to 'Back', applicant_household_members_path %>

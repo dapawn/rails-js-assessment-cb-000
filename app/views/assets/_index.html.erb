@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @assets  %>
+    <% Array(@assets).each do |asset| %>
+      <tr>
+        <td><%= asset.description %></td>
+        <td><%= asset.value %></td>
+        <td><%= link_to 'Edit', edit_applicant_asset_path(@applicant.id, asset.id) %></td>
+        <td><%= link_to 'Delete', [@applicant, asset], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

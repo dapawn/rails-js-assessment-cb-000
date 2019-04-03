@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Relation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Array(@household_members).each do |household_member| %>
+      <tr>
+        <td><%= household_member.name %></td>
+        <td><%= household_member.age %></td>
+        <td><%= household_member.relation %></td>
+        <td><%= link_to 'Edit', edit_applicant_household_member_path(@applicant, household_member) %></td>
+        <td><%= link_to 'Destroy', [@applicant, household_member], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

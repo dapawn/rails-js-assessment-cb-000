@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @request.item %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @request.cost %>
+</p>
+
+<p>
+  <strong>Availability:</strong>
+  <%= @request.availability %>
+</p>
+
+<p>
+  <strong>Business:</strong>
+  <%= @request.business %>
+</p>
+
+<p>
+  <strong>Benefit:</strong>
+  <%= @request.benefit %>
+</p>
+
+<p>
+  <strong>Why:</strong>
+  <%= @request.why %>
+</p>
+
+<p>
+  <strong>Recommentdation:</strong>
+  <%= @request.recommentdation %>
+</p>
+
+<%= link_to 'Edit', edit_applicant_request_path(@applicant, @request) %> |
+<%= link_to 'Back', applicant_requests_path %>

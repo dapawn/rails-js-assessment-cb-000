@@ -1,0 +1,46 @@
+<%= form_for([@applicant, @request]) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item %><br>
+    <%= f.text_field :item %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :availability %><br>
+    <%= f.number_field :availability %>
+  </div>
+  <div class="field">
+    <%= f.label :business %><br>
+    <%= f.text_field :business %>
+  </div>
+  <div class="field">
+    <%= f.label :benefit %><br>
+    <%= f.text_field :benefit %>
+  </div>
+  <div class="field">
+    <%= f.label :why %><br>
+    <%= f.text_field :why %>
+  </div>
+  <div class="field">
+    <%= f.label :recommentdation %><br>
+    <%= f.text_field :recommentdation %>
+  </div>
+  <%= hidden_field_tag "request[applicant_id]", @request.applicant_id %>
+  <div class="actions">
+    <%= f.submit "Save and Continue to Review Application"%>
+  </div>
+<% end %>

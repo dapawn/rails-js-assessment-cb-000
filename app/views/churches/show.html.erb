@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @church.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @church.country %>
+</p>
+
+<p>
+  <strong>Minister:</strong>
+  <%= @church.minister %>
+</p>
+
+<p>
+  <strong>Applicants:</strong>
+  <%= render 'applicants/index' %>
+</p>
+
+<%= link_to 'Edit', edit_church_path(@church) %> |
+<%= link_to 'Back', churches_path %>

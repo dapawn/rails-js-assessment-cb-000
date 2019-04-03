@@ -1,0 +1,78 @@
+<%= form_for(@applicant) do |f| %>
+  <% if @applicant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
+
+      <ul>
+      <% @applicant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname %><br>
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br>
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    Gender: 
+    <% Applicant.genders.keys.each do |gender| %>
+      <%= f.radio_button :gender, gender %>
+      <%= f.label gender.to_sym %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.number_field :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    Marital Status: 
+    <% Applicant.married_statuses.keys.each do |married_status| %>
+      <%= f.radio_button :married_status, married_status %>
+      <%= f.label married_status.to_sym %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :church_id %><br>
+
+    <% if @applicant.church.nil? %>
+      <%= select_tag "applicant[church_id]", options_from_collection_for_select(Church.all, :id, :city) %>
+    <% else %>
+      <%= hidden_field_tag "applicant[church_id]", @applicant.church_id %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :occupation %><br>
+    <%= f.text_field :occupation %>
+  </div>
+  <div class="field">
+    Occupational Status: 
+    <% Applicant.occupation_statuses.keys.each do |occupation_status| %>
+      <%= f.radio_button :occupation_status, occupation_status %>
+      <%= f.label occupation_status.to_sym %>
+    <% end %>
+  </div>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.text_field :income %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save and Continue to Asset Entry"%>
+  </div>
+<% end %>
