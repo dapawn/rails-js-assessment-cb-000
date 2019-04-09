@@ -50,7 +50,7 @@
     <%= f.label :church_id %><br>
 
     <% if @applicant.church.nil? %>
-      <%= select_tag "applicant[church_id]", options_from_collection_for_select(Church.all, :id, :city) %>
+      <%= select_tag "applicant[church_id]", options_from_collection_for_select([current_user.church] + Church.all, :id, :city) %>
     <% else %>
       <%= hidden_field_tag "applicant[church_id]", @applicant.church_id %>
     <% end %>

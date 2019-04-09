@@ -1,6 +1,6 @@
-<nav class="">
+<nav class="nav navbar-nav">
     <ul>
-        <li> <%= link_to "Home", churches_path %> </li>
+        <li> <%= link_to "Home", current_user ? church_path(current_user.church) : '#';%> </li>
         <% if current_user %>
           <li> <%= link_to "New Applicant", new_applicant_path %></li>
         <% end %>

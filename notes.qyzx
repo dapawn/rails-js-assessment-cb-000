@@ -1,0 +1,1 @@
+$("a[href='/applicants/...'").on("click", function(e){e.preventDefault(e);alert("You clicked me!");)}
