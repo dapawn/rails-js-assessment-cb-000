@@ -25,9 +25,10 @@ class ApplicantsController < ApplicationController
   # POST /applicants
   def create
     @applicant = Applicant.new(applicant_params)
+    @asset = Asset.new(applicant_id: @applicant.id)
 
     if @applicant.save
-      redirect_to applicant_assets_path(@applicant), notice: 'Applicant was successfully created.'
+	    render "assets/index", applicant: @applicant, asset: @asset
     else
       render :new
     end

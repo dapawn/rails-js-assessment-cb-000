@@ -2,9 +2,9 @@
 
 <h1>Listing Assets</h1>
 
-<%= render 'index' %>
+<%= render 'assets/index' %> <!-- added assets/ for when rendered in nested route -->
 
 
-<%= link_to 'New Asset', new_applicant_asset_path %>
-<p><%= link_to 'Continue to Household Member Entry', applicant_household_members_path %></p>
+<%= link_to 'New Asset', new_applicant_asset_path(@applicant) %>
+<p><%= link_to 'Continue to Household Member Entry', applicant_household_members_path(@applicant) %></p>
 
