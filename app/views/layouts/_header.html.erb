@@ -1,9 +1,20 @@
-<nav class="nav navbar-nav">
-    <ul>
-        <li> <%= link_to "Home", current_user ? church_path(current_user.church) : '#';%> </li>
-        <% if current_user %>
-          <li> <%= link_to "New Applicant", new_applicant_path %></li>
-        <% end %>
-        <%= render 'layouts/sign_in' %>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+ <span class = "navbar-brand">Welcome <%= current_user ? current_user.email : ""%></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Home", current_user ? church_path(current_user.church) : '#', class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New Applicant", new_applicant_path, class: "nav-link" %>
+        </li>
+      <% end %>
+      <%= render 'layouts/sign_in' %>
     </ul>
+  </div>
 </nav>
+

@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.jumbotron {
+  background-image: url(image-path("sowersfund_grass.jpg"));
+  background-size: cover;
+}
