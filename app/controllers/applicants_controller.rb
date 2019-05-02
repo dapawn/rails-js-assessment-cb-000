@@ -4,6 +4,7 @@ class ApplicantsController < ApplicationController
   # GET /applicants
   def index
     @applicants = Applicant.all
+    render layout: false
   end
 
   # GET /applicants/1
@@ -11,11 +12,13 @@ class ApplicantsController < ApplicationController
     @assets = Asset.where(applicant_id: @applicant.id)
     @household_members = HouseholdMember.where(applicant_id: @applicant.id)
     @requests = Request.where(applicant_id: @applicant.id)
+    #render layout: false
   end
 
   # GET /applicants/new
   def new
     @applicant = Applicant.new
+    render layout: false
   end
 
   # GET /applicants/1/edit
@@ -28,9 +31,9 @@ class ApplicantsController < ApplicationController
     @asset = Asset.new(applicant_id: @applicant.id)
 
     if @applicant.save
-	    render "assets/index", applicant: @applicant, asset: @asset
+	    render "assets/index", applicant: @applicant, asset: @asset, layout: false
     else
-      render :new
+	    render :new, layout: false
     end
   end
 

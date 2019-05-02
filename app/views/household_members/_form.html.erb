@@ -1,4 +1,4 @@
-<%= form_for([@applicant, @household_member]) do |f| %>
+<%= form_for([@applicant, @household_member], html: {id: "index_form"}) do |f| %>
   <% if @household_member.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@household_member.errors.count, "error") %> prohibited this household_member from being saved:</h2>
@@ -28,3 +28,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= javascript_include_tag "multi_form" %> 

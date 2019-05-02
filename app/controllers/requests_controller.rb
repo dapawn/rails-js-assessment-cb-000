@@ -6,6 +6,7 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.where(applicant_id: params[:applicant_id])
     #@requests = Request.all
+    render layout: false
   end
 
   # GET /requests/1
@@ -15,6 +16,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new(applicant_id: params[:applicant_id])
+    render layout: false
   end
 
   # GET /requests/1/edit
@@ -25,8 +27,14 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
 
+
     if @request.save
-	    redirect_to applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.'
+      @requests = Request.where(applicant_id: params[:applicant_id])
+      @assets = Asset.where(applicant_id: @applicant.id)
+      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      render :show, notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
+      #render applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
+      #redirect_to applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.'
     else
       render :new
     end

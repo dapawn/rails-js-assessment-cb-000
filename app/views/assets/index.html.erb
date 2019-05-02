@@ -2,9 +2,15 @@
 
 <h1>Listing Assets</h1>
 
-<%= render 'assets/index' %> <!-- added assets/ for when rendered in nested route -->
+<div class="index">
+  <%= render 'assets/index', layout: false %> <!-- added assets/ for when rendered in nested route -->
+</div>
 
+<h1>New Asset:</h1>
 
-<%= link_to 'New Asset', new_applicant_asset_path(@applicant) %>
-<p><%= link_to 'Continue to Household Member Entry', applicant_household_members_path(@applicant) %></p>
+<%= render 'assets/form' %>
 
+<!-- <%= link_to 'New Asset', new_applicant_asset_path(@applicant), class: "new" %> -->
+<p><%= link_to 'Continue to Household Member Entry', applicant_household_members_path(@applicant), class: "continue" %></p>
+
+<!-- <%= javascript_include_tag "multi_form" %> -->

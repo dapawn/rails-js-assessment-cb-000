@@ -4,8 +4,10 @@ class HouseholdMembersController < ApplicationController
 
   # GET /household_members
   def index
+    @household_member = HouseholdMember.new(applicant_id: params[:applicant_id])
     @household_members = HouseholdMember.where(applicant_id: params[:applicant_id])
     #@household_members = HouseholdMember.all
+    render layout: false
   end
 
   # GET /household_members/1
@@ -15,6 +17,7 @@ class HouseholdMembersController < ApplicationController
   # GET /household_members/new
   def new
     @household_member = HouseholdMember.new(applicant_id: params[:applicant_id])
+    render layout: false
   end
 
   # GET /household_members/1/edit
@@ -26,10 +29,12 @@ class HouseholdMembersController < ApplicationController
     @household_member = HouseholdMember.new(household_member_params)
 
     if @household_member.save
-      redirect_to applicant_household_members_url, notice: 'Household member was successfully created.'
+      @household_members = HouseholdMember.where(applicant_id: params[:applicant_id])
+      render "household_members/_index.html.erb", applicant: @applicant, household_member: @household_member, layout: false
+      #redirect_to applicant_household_members_url, notice: 'Household member was successfully created.'
       #redirect_to @household_member, notice: 'Household member was successfully created.'
     else
-      render :new
+      render :new, layyout: false
     end
   end
 
@@ -38,7 +43,7 @@ class HouseholdMembersController < ApplicationController
     if @household_member.update(household_member_params)
       redirect_to applicant_household_members_path(@applicant), notice: 'Household member was successfully updated.'
     else
-      render :edit
+      render :edit, layyout: false
     end
   end
 

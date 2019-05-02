@@ -1,4 +1,4 @@
-<%= form_for([@applicant, @asset]) do |f| %>
+<%= form_for([@applicant, @asset], html: {id: "index_form"}) do |f| %>
   <% if @asset.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
@@ -19,8 +19,10 @@
     <%= f.label :value %><br>
     <%= f.text_field :value %>
   </div>
-  <%= hidden_field_tag "asset[applicant_id]", @asset.applicant_id %>
+  <%= hidden_field_tag "asset[applicant_id]", @applicant.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= javascript_include_tag "multi_form" %>

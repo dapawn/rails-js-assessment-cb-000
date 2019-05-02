@@ -6,7 +6,7 @@ class AssetsController < ApplicationController
   def index
     @assets = Asset.where(applicant_id: params[:applicant_id])
     #@assets = Asset.all
-#raise @assets.inspect
+    render layout: false
   end
 
   # GET /assets/1
@@ -16,6 +16,7 @@ class AssetsController < ApplicationController
   # GET /assets/new
   def new
     @asset = Asset.new(applicant_id: params[:applicant_id])
+    render layout: false
   end
 
   # GET /assets/1/edit
@@ -26,11 +27,15 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.new(asset_params)
 
+#raise asset_params.inspect
+
     if @asset.save
-      redirect_to applicant_assets_url, notice: 'Asset was successfully created.'
+      @assets = Asset.where(applicant_id: params[:applicant_id])
+      render "assets/_index.html.erb", applicant: @applicant, asset: @asset, layout: false
+      #redirect_to applicant_assets_url, notice: 'Asset was successfully created.'
       #redirect_to [@applicant, @asset], notice: 'Asset was successfully created.'
     else
-      render :new
+      render :new, layout: false
     end
   end
 

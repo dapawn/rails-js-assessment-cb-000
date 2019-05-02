@@ -2,8 +2,16 @@
 
 <h1>Listing Household Members</h1>
 
-<%= render 'index' %>
+<div class="index">
+  <%= render 'household_members/index', layout: false %> <!-- added assets/ for when rendered in nested route -->
+</div>
 
-<%= link_to 'New Household member', new_applicant_household_member_path %>
-<p><%= link_to 'Continue to Request Entry', new_applicant_request_path %></p>
+<h1>New Household Members</h1>
+
+  <%= render 'household_members/form' %> <!-- added assets/ for when rendered in nested route -->
+
+<!-- <%= link_to 'New Household member', new_applicant_household_member_path %> -->
+<p><%= link_to 'Continue to Request Entry', new_applicant_request_path(@applicant), class: "continue" %></p>
+
+<!-- <%= javascript_include_tag "multi_form" %> -->
 
