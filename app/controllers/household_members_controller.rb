@@ -22,6 +22,7 @@ class HouseholdMembersController < ApplicationController
 
   # GET /household_members/1/edit
   def edit
+    render layout: false
   end
 
   # POST /household_members
@@ -34,23 +35,31 @@ class HouseholdMembersController < ApplicationController
       #redirect_to applicant_household_members_url, notice: 'Household member was successfully created.'
       #redirect_to @household_member, notice: 'Household member was successfully created.'
     else
-      render :new, layyout: false
+      render :new, layout: false
     end
   end
 
   # PATCH/PUT /household_members/1
   def update
     if @household_member.update(household_member_params)
-      redirect_to applicant_household_members_path(@applicant), notice: 'Household member was successfully updated.'
+      @assets = Asset.where(applicant_id: @applicant.id)
+      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      @requests = Request.where(applicant_id: @applicant.id)
+      render "applicants/show", notice: 'Household member was successfully updated.', layout: false
+      #redirect_to applicant_household_members_path(@applicant), notice: 'Household member was successfully updated.'
     else
-      render :edit, layyout: false
+      render :edit, layout: false
     end
   end
 
   # DELETE /household_members/1
   def destroy
     @household_member.destroy
-    redirect_to applicant_household_members_url, notice: 'Household member was successfully destroyed.'
+    #@assets = Asset.where(applicant_id: @applicant.id)
+    #@requests = Request.where(applicant_id: @applicant.id)
+    #@household_members = HouseholdMember.where(applicant_id: @applicant.id)
+    #render "applicants/show", notice: 'Household member was successfully destroyed.', layout: false
+    #redirect_to applicant_household_members_url, notice: 'Household member was successfully destroyed.'
   end
 
   private

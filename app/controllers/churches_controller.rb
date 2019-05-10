@@ -18,6 +18,7 @@ class ChurchesController < ApplicationController
 
   # GET /churches/1/edit
   def edit
+    render layout: false
   end
 
   # POST /churches
@@ -36,7 +37,7 @@ class ChurchesController < ApplicationController
       if @church.update(church_params)
         redirect_to @church, notice: 'Church was successfully updated.'
       else
-        render :edit
+        render :edit, layout: false
       end
   end
 

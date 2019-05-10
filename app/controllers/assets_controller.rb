@@ -21,6 +21,7 @@ class AssetsController < ApplicationController
 
   # GET /assets/1/edit
   def edit
+    render layout: false
   end
 
   # POST /assets
@@ -42,16 +43,24 @@ class AssetsController < ApplicationController
   # PATCH/PUT /assets/1
   def update
     if @asset.update(asset_params)
-      redirect_to applicant_asset_path(@applicant, @asset), notice: 'Asset was successfully updated.'
+      @assets = Asset.where(applicant_id: @applicant.id)
+      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      @requests = Request.where(applicant_id: @applicant.id)
+      render "applicants/show", notice: 'Asset was successfully updated.', layout: false
+      #redirect_to applicant_asset_path(@applicant, @asset), notice: 'Asset was successfully updated.'
     else
-      render :edit
+      render :edit, layout: false
     end
   end
 
   # DELETE /assets/1
   def destroy
     @asset.destroy
-    redirect_to applicant_assets_url, notice: 'Asset was successfully destroyed.'
+    #@assets = Asset.where(applicant_id: @applicant.id)
+    #@household_members = HouseholdMember.where(applicant_id: @applicant.id)
+    #@requests = Request.where(applicant_id: @applicant.id)
+    #render "applicants/show", notice: 'Asset was successfully deleted.', layout: false
+    #redirect_to applicant_assets_url, notice: 'Asset was successfully destroyed.'
   end
 
   private

@@ -23,6 +23,7 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/1/edit
   def edit
+    render layout: false
   end
 
   # POST /applicants
@@ -40,16 +41,36 @@ class ApplicantsController < ApplicationController
   # PATCH/PUT /applicants/1
   def update
     if @applicant.update(applicant_params)
-      redirect_to @applicant, notice: 'Applicant was successfully updated.'
+      @assets = Asset.where(applicant_id: @applicant.id)
+      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      @requests = Request.where(applicant_id: @applicant.id)
+      render :show, notice: 'Applicant was successfully updated.', layout: false
+      #redirect_to @applicant, notice: 'Applicant was successfully updated.'
     else
-      render :edit
+      render :edit, layout: false
     end
   end
 
   # DELETE /applicants/1
   def destroy
+    if @requests = Request.where(applicant_id: @applicant.id)
+      Array(@requests).each do |request|
+        request.destroy
+      end
+    end
+    if @assets = Asset.where(applicant_id: @applicant.id)
+      Array(@assets).each do |asset|
+        asset.destroy
+      end
+    end
+    if @household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      Array(@household_members).each do |household_member|
+        household_member.destroy
+      end
+    end
     @applicant.destroy
-    redirect_to applicants_url, notice: 'Applicant was successfully destroyed.'
+    render "churches/show", notice: 'Applicant was successfully deleted.'
+    #redirect_to applicants_url, notice: 'Applicant was successfully destroyed.'
   end
 
   private

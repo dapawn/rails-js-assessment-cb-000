@@ -1,3 +1,4 @@
+<div class="main">
 <p id="notice"><%= notice %></p>
 
 <h1> Applicant Details:</h1>
@@ -57,10 +58,12 @@
   <%= @applicant.income %>
 </p>
 
-<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Edit', edit_applicant_path(@applicant), class: "continue", layout: false %>
 
 <h1>Assets Details: </h1>
+<div class="index">
 <%= render 'assets/index' %>
+</div>
 
 <h1>Household Details: </h1>
 <%= render 'household_members/index' %>
@@ -68,3 +71,30 @@
 <h1>Request Details: </h1>
 <%= render 'requests/index' %>
 
+  <!-- Asset Modal -->
+  <div class="modal fade" id="assetModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <!-- Modal Header
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Asset</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+
+        <!-- Modal body -->
+        <div class="modal-body">
+		
+        </div>
+
+        <!-- Modal footer 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>  -->
+
+      </div>
+    </div>
+  </div>
+
+<!-- <%= javascript_include_tag "delete" %> -->
+</div>

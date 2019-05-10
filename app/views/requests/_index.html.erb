@@ -23,8 +23,8 @@
         <td><%= request.why %></td>
         <td><%= request.recommentdation %></td>
         <td><%= link_to 'Show', applicant_request_path(@applicant, request) %></td>
-        <td><%= link_to 'Edit', edit_applicant_request_path(@applicant, request) %></td>
-        <td><%= link_to 'Destroy', [@applicant, request], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_applicant_request_path(@applicant, request),class: "edit", layout: false %></td>
+        <td><%= link_to 'Delete', [@applicant, request], class: "delete", layout: false, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
