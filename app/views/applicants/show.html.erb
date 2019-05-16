@@ -61,36 +61,28 @@
 <%= link_to 'Edit', edit_applicant_path(@applicant), class: "continue", layout: false %>
 
 <h1>Assets Details: </h1>
-<div class="index">
+<div class="jsindex">
 <%= render 'assets/index' %>
 </div>
 
 <h1>Household Details: </h1>
+<div class="jsindex">
 <%= render 'household_members/index' %>
+</div>
 
 <h1>Request Details: </h1>
+<div class="jsindex">
 <%= render 'requests/index' %>
+</div>
 
   <!-- Asset Modal -->
-  <div class="modal fade" id="assetModal">
+  <div class="modal fade" id="formModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
-        <!-- Modal Header
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Asset</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-
-        <!-- Modal body -->
+        <!-- Modal body populated with javascript-->
         <div class="modal-body">
-		
         </div>
-
-        <!-- Modal footer 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>  -->
 
       </div>
     </div>

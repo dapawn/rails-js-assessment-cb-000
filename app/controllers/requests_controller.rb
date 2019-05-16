@@ -33,7 +33,7 @@ class RequestsController < ApplicationController
       @requests = Request.where(applicant_id: params[:applicant_id])
       @assets = Asset.where(applicant_id: @applicant.id)
       @household_members = HouseholdMember.where(applicant_id: @applicant.id)
-      render :show, notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
+      render 'applicants/show', notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
       #render applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
       #redirect_to applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.'
     else
@@ -44,10 +44,11 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1
   def update
     if @request.update(request_params)
-      @assets = Asset.where(applicant_id: @applicant.id)
-      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      #@assets = Asset.where(applicant_id: @applicant.id)
+      #@household_members = HouseholdMember.where(applicant_id: @applicant.id)
       @requests = Request.where(applicant_id: @applicant.id)
-      render :show, notice: 'Request was successfully updated.', layout: false
+      render "requests/_index.html.erb", applicant: @applicant, request: @request, layout: false
+      #render :show, notice: 'Request was successfully updated.', layout: false
       #redirect_to applicant_request_path(@applicant, @request), notice: 'Request was successfully updated.'
     else
       render :edit, layout: false
@@ -76,6 +77,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:item, :cost, :availability, :business, :benefit, :why, :recommentdation, :applicant_id)
+      params.require(:request).permit(:item, :cost, :availability, :business, :benefit, :why, :recommendation, :applicant_id)
     end
 end

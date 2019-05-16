@@ -43,10 +43,8 @@ class AssetsController < ApplicationController
   # PATCH/PUT /assets/1
   def update
     if @asset.update(asset_params)
-      @assets = Asset.where(applicant_id: @applicant.id)
-      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
-      @requests = Request.where(applicant_id: @applicant.id)
-      render "applicants/show", notice: 'Asset was successfully updated.', layout: false
+      @assets = Asset.where(applicant_id: params[:applicant_id])
+      render "assets/_index.html.erb", applicant: @applicant, asset: @asset, layout: false
       #redirect_to applicant_asset_path(@applicant, @asset), notice: 'Asset was successfully updated.'
     else
       render :edit, layout: false

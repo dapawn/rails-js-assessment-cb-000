@@ -9,9 +9,9 @@ $(function(e){
 
   $("#index_form").on("submit", function(e){
     e.preventDefault(e);
+    $('#formModal').hide();
+    $('.modal-backdrop').remove();
     // Low level
-//    if (!e.handled) {
-//      e.handled = true;
       $.ajax({
         type: ($("input[name='_method']").val() || this.method),
         url: this.action,
@@ -22,7 +22,6 @@ $(function(e){
           $("#index_form").find("input[type=submit]").removeAttr('disabled'); //Once finished, we need to re-enable button
         }
       });
-//    }
   });
 
 });

@@ -13,7 +13,7 @@
       <tr>
         <td><%= asset.description %></td>
         <td><%= asset.value %></td>
-	<td><%= link_to 'Edit', edit_applicant_asset_path(@applicant.id, asset.id), class: "edit", layout: false, data: {toggle: "modal", target: "#assetModal", description: asset.description, value: asset.value } %></td>
+	<td><%= link_to 'Edit', edit_applicant_asset_path(@applicant.id, asset.id), class: "editAsset", layout: false, data: {toggle: "modal", target: "#formModal", description: asset.description, value: asset.value } %></td>
         <td><%= link_to 'Delete', [@applicant, asset], class: "delete", layout: false, method: :delete %></td>
       </tr>
     <% end %>

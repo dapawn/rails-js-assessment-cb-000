@@ -21,9 +21,21 @@
         <td><%= request.business %></td>
         <td><%= request.benefit %></td>
         <td><%= request.why %></td>
-        <td><%= request.recommentdation %></td>
-        <td><%= link_to 'Show', applicant_request_path(@applicant, request) %></td>
-        <td><%= link_to 'Edit', edit_applicant_request_path(@applicant, request),class: "edit", layout: false %></td>
+        <td><%= request.recommendation %></td>
+	<!--        <td><%= link_to 'Show', applicant_request_path(@applicant, request) %></td> -->
+        <td><%= link_to 'Edit', edit_applicant_request_path(@applicant, request),
+                class: "editRequest",
+                layout: false, 
+                data: {toggle: "modal",
+                       target: "#formModal", 
+                       item: request.item,
+                       cost: request.cost,
+		       availability: request.availability,
+		       business: request.business,
+		       benefit: request.benefit,
+		       why: request.why,
+		       recommendation: request.recommendation
+	              } %></td>
         <td><%= link_to 'Delete', [@applicant, request], class: "delete", layout: false, method: :delete %></td>
       </tr>
     <% end %>

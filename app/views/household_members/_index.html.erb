@@ -14,7 +14,16 @@
         <td><%= household_member.name %></td>
         <td><%= household_member.age %></td>
         <td><%= household_member.relation %></td>
-        <td><%= link_to 'Edit', edit_applicant_household_member_path(@applicant, household_member),class: "edit", layout: false %></td>
+	<td><%= link_to 'Edit', 
+		edit_applicant_household_member_path(@applicant, household_member), 
+		class: "editHouseholdMember", 
+		layout: false, 
+		data: {toggle: "modal", 
+	               target: "#formModal", 
+		       name: household_member.name, 
+		       age: household_member.age, 
+		       relation: household_member.relation 
+	              }  %></td>
         <td><%= link_to 'Delete', [@applicant, household_member], class: "delete", layout: false, method: :delete %></td>
       </tr>
     <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_15_203559) do
+ActiveRecord::Schema.define(version: 2019_05_15_140645) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "fname"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_12_15_203559) do
     t.string "business"
     t.string "benefit"
     t.string "why"
-    t.string "recommentdation"
+    t.string "recommendation"
     t.integer "applicant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

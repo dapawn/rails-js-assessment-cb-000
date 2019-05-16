@@ -42,10 +42,11 @@ class HouseholdMembersController < ApplicationController
   # PATCH/PUT /household_members/1
   def update
     if @household_member.update(household_member_params)
-      @assets = Asset.where(applicant_id: @applicant.id)
+      #@assets = Asset.where(applicant_id: @applicant.id)
       @household_members = HouseholdMember.where(applicant_id: @applicant.id)
-      @requests = Request.where(applicant_id: @applicant.id)
-      render "applicants/show", notice: 'Household member was successfully updated.', layout: false
+      #@requests = Request.where(applicant_id: @applicant.id)
+      render "household_members/_index.html.erb", applicant: @applicant, household_member: @household_member, layout: false
+      #render "applicants/show", notice: 'Household member was successfully updated.', layout: false
       #redirect_to applicant_household_members_path(@applicant), notice: 'Household member was successfully updated.'
     else
       render :edit, layout: false
