@@ -1,5 +1,5 @@
 $(function(e){
-  $("a.delete").one("click", function(e){
+  $("div.main").on("click", "a.delete", function(e){
     e.preventDefault();
     e.stopPropagation();
     var $tr  = $(this).closest('tr');

@@ -15,9 +15,7 @@
         <td><%= applicant.fname %></td>
         <td><%= applicant.lname %></td>
         <td><%= applicant.church.city %></td>
-        <td><%= link_to 'Show', applicant %></td>
-        <td><%= link_to 'Edit', edit_applicant_path(applicant) %></td>
-        <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View/Edit', applicant, class: "continue" , layout: false  %></td>
       </tr>
     <% end %>
   </tbody>

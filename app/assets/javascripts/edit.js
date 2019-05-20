@@ -1,5 +1,5 @@
 $(function(e){
-  $("a.editAsset").on("click", function(e) {
+  $("div.main").on("click", "a.editAsset", function(e) {
 	  console.log("In a.editAsset");
     //Set index class on the div so that the multi_form js script will work
     $('div.jsindex').removeClass('index');
@@ -18,7 +18,7 @@ $(function(e){
 });
 
 $(function(e){
-  $("a.editHouseholdMember").on("click", function(e) {
+  $("div.main").on("click", "a.editHouseholdMember", function(e) {
 	  console.log("In a.editHouseholdMembers");
     $('div.jsindex').removeClass('index');
     $(this).closest('div.jsindex').addClass('index');
@@ -38,7 +38,7 @@ $(function(e){
 });
 
 $(function(e){
-  $("a.editRequest").on("click", function(e) {
+  $("div.main").on("click", "a.editRequest", function(e) {
 	  console.log("In a.editRequest");
     $('div.jsindex').removeClass('index');
     $(this).closest('div.jsindex').addClass('index');

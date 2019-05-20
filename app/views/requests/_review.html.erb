@@ -1,0 +1,2 @@
+<%= render 'requests/index', layout: false %> <!-- added requests/ for when rendered in nested route -->
+<%= link_to 'Add Request', new_applicant_request_path(@applicant), class: "editRequest", layout: false, data: {toggle: "modal", target: "#formModal" } %>

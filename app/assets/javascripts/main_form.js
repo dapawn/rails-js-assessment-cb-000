@@ -8,7 +8,7 @@ $(function(e){
       url: this.action,
       data: $(this).serialize(), // either JSON or querystring serializing
       success: function(data){
-        $("div.main").html(data)
+        $("div.main").html(data);
       }
     });
   });

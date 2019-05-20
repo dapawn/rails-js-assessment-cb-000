@@ -12,7 +12,7 @@ class ApplicantsController < ApplicationController
     @assets = Asset.where(applicant_id: @applicant.id)
     @household_members = HouseholdMember.where(applicant_id: @applicant.id)
     @requests = Request.where(applicant_id: @applicant.id)
-    #render layout: false
+    render layout: false
   end
 
   # GET /applicants/new

@@ -11,13 +11,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %> <!-- Didn't recognize 'method: :delete' without this line -->
   <style>
-  .fakeimg {
-    height: 200px;
-    background: #aaa;
-  }
+    .fakeimg {
+      height: 200px;
+      background: #aaa;
+    }
+
+    .modal-open {
+      overflow: inherit;
+    }
   </style>
 </head>
-<body>
+<body class="mine" style="padding-right: 0px;">
 
 <div class="jumbotron text-white" style="margin-bottom:0; background-image: url('/assets/sowersfund_grass.jpg'); background-size: cover">
 

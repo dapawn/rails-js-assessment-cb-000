@@ -31,12 +31,12 @@ class RequestsController < ApplicationController
 
     if @request.save
       @requests = Request.where(applicant_id: params[:applicant_id])
-      @assets = Asset.where(applicant_id: @applicant.id)
-      @household_members = HouseholdMember.where(applicant_id: @applicant.id)
-      render 'applicants/show', notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
-      #render applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
-      #redirect_to applicant_url(@applicant), notice: 'Request was successfully submitted. Please review, and make changes if needed.'
+      #@assets = Asset.where(applicant_id: @applicant.id)
+      #@household_members = HouseholdMember.where(applicant_id: @applicant.id)
+      #render 'applicants/show', notice: 'Request was successfully submitted. Please review, and make changes if needed.', layout: false
+      render "requests/_index.html.erb", applicant: @applicant, request: @request, layout: false
     else
+	    alert('Save did not work, try again');
       render :new, layout: false
     end
   end
@@ -44,12 +44,8 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1
   def update
     if @request.update(request_params)
-      #@assets = Asset.where(applicant_id: @applicant.id)
-      #@household_members = HouseholdMember.where(applicant_id: @applicant.id)
       @requests = Request.where(applicant_id: @applicant.id)
       render "requests/_index.html.erb", applicant: @applicant, request: @request, layout: false
-      #render :show, notice: 'Request was successfully updated.', layout: false
-      #redirect_to applicant_request_path(@applicant, @request), notice: 'Request was successfully updated.'
     else
       render :edit, layout: false
     end

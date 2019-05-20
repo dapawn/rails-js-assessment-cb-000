@@ -58,27 +58,40 @@
   <%= @applicant.income %>
 </p>
 
+<!-- <%= link_to 'Add', new_applicant_path(@applicant), class: "continue", layout: false %> -->
 <%= link_to 'Edit', edit_applicant_path(@applicant), class: "continue", layout: false %>
 
 <h1>Assets Details: </h1>
 <div class="jsindex">
 <%= render 'assets/index' %>
+<%= link_to 'Add Asset', new_applicant_asset_path(@applicant), class: "editAsset", layout: false, data: {toggle: "modal", target: "#formModal" } %>
 </div>
+<br>
 
 <h1>Household Details: </h1>
 <div class="jsindex">
 <%= render 'household_members/index' %>
+<%= link_to 'Add Household Member', new_applicant_household_member_path(@applicant), class: "editHouseholdMember", layout: false, data: {toggle: "modal", target: "#formModal" } %>
 </div>
+<br>
 
 <h1>Request Details: </h1>
 <div class="jsindex">
 <%= render 'requests/index' %>
+<%= link_to 'Add Request', new_applicant_request_path(@applicant), class: "editRequest", layout: false, data: {toggle: "modal", target: "#formModal" } %>
 </div>
+<br>
 
   <!-- Asset Modal -->
   <div class="modal fade" id="formModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
+
+        <div class="modal-header">
+          <button class="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
 
         <!-- Modal body populated with javascript-->
         <div class="modal-body">
@@ -88,5 +101,6 @@
     </div>
   </div>
 
-<!-- <%= javascript_include_tag "delete" %> -->
+  <!-- <%= javascript_include_tag "delete" %> -->
+<%= javascript_include_tag "edit" %>
 </div>
