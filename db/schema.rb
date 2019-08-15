@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_05_15_140645) do
 
-  create_table "applicants", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "applicants", id: :serial, force: :cascade do |t|
     t.string "fname"
     t.string "lname"
     t.string "address"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_140645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "assets", force: :cascade do |t|
+  create_table "assets", id: :serial, force: :cascade do |t|
     t.string "description"
     t.string "value"
     t.integer "applicant_id"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_140645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "churches", force: :cascade do |t|
+  create_table "churches", id: :serial, force: :cascade do |t|
     t.string "city"
     t.string "country"
     t.string "minister"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_140645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "household_members", force: :cascade do |t|
+  create_table "household_members", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.string "relation"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_140645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "requests", force: :cascade do |t|
+  create_table "requests", id: :serial, force: :cascade do |t|
     t.string "item"
     t.string "cost"
     t.integer "availability"
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_140645) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
