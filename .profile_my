@@ -1,2 +1,2 @@
 bash --login
-rvm use 2.3.3
+rvm use 2.5.5
